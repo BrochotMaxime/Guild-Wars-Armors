@@ -59,3 +59,9 @@ select {
     border: 2px solid #aaa;
     background-color: #d4d4d4;
 }
+
+.completed {
+    opacity: 0.9;
+    border: 2px solid #2196F3;
+    background-color: #e3f2fd;
+}
