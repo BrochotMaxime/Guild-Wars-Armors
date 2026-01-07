@@ -1,3 +1,6 @@
+// Work on workflow steps based on user selections
+
+// Sections representing each step in the workflow
 const professionSection = document.getElementById('profession-selection');
 const armorSection = document.getElementById('armor-selection');
 const playerInventorySection = document.getElementById('player-inventory');
@@ -13,7 +16,6 @@ const sections = document.querySelectorAll('.step');
 const updateWorkflowSteps = (currentStepIndex) => {
     sections.forEach((section, index) => {
         section.classList.remove('active', 'inactive', 'completed');
-
         if (index < currentStepIndex) {
             section.classList.add('completed');
         } else if (index === currentStepIndex) {
@@ -41,11 +43,4 @@ professionSelected.addEventListener('change', () => {
     } else {
         updateWorkflowSteps(1); // Second step active
     }
-    // if (!professionSelected.value) {
-    //     alert('Please select a profession to proceed.');
-    //     updateWorkflowSteps(0); // First step active
-    // } else {
-    //     updateWorkflowSteps(1); // Second step active
-    // }
 });
-
