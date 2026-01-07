@@ -1,52 +1,69 @@
-gameData = {
+const gameData = {
     professions: {
         warrior: {
             name: "Warrior",
-            propheciesArmors: ["warrior-ascalon", "warrior-krytan", "warrior-tyrian", "warrior-charr-hide", "warrior-gladiator", "warrior-wyvern", "warrior-platemail", "warrior-templar", "warrior-elite-charr-hide", "warrior-elite-gladiator", "warrior-elite-dragon", "warrior-elite-platemail", "warrior-elite-templar"],
-            factionsArmors: [ ],
-            nightfallArmors: [ ],
-            eyeOfTheNorthArmors: [ ]
+            armorsByCampaign : {
+                prophecies: ["warrior-ascalon", "warrior-krytan", "warrior-tyrian", "warrior-charr-hide", "warrior-gladiator", "warrior-wyvern", "warrior-platemail", "warrior-templar", "warrior-elite-charr-hide", "warrior-elite-gladiator", "warrior-elite-dragon", "warrior-elite-platemail", "warrior-elite-templar"],
+                factions: [ ],
+                nightfall: [ ],
+                eyeOfTheNorth: [ ]
+            }
         },
         ranger: {
             name: "Ranger",
-            propheciesArmorsarmors: [ ],
-            // More armor sets...
+            armorsByCampaign : {
+                prophecies: [ ],
+                factions: [ ],
+                nightfall: [ ],
+                eyeOfTheNorth: [ ]
+            }
         },
         // More professions...
     },
     
     armors: {
-        "warrior-ascalon": {
-            name: "Ascalon Armor",
-            goldCost: 5000,
-            materials: {
-                tannedHideSquare: 200,
-                steelIngot: 32
+        warrior: {
+            "warrior-ascalon": {
+                name: "Ascalon Armor",
+                armorCost: {
+                    goldCost: 5000,
+                    materials: {
+                        tannedHideSquare: 200,
+                        steelIngot: 32
+                    }
+                },
+                image: "...",
+                wiki: "https://wiki.guildwars.com/wiki/Warrior_Ascalon_armor"
             },
-            image: "...",
-            wiki: "https://wiki.guildwars.com/wiki/Warrior_Ascalon_armor"
-        },
-        "warrior-krytan": {
-            name: "Krytan Armor",
-            goldCost: 5000,
-            materials: {
-                ironIngot: 200,
-                steelIngot: 32
+            "warrior-krytan": {
+                name: "Krytan Armor",
+                armorCost: {
+                    goldCost: 5000,
+                    materials: {
+                        ironIngot: 200,
+                        steelIngot: 32
+                    }
+                },
+                image: "...",
+                wiki: "https://wiki.guildwars.com/wiki/Warrior_Krytan_armor"
             },
-            image: "...",
-            wiki: "https://wiki.guildwars.com/wiki/Warrior_Krytan_armor"
-        },
-        "warrior-tyrian": {
-            name: "Tyrian Armor",
-            goldCost: 5000,
-            materials: {
-                ironIngot: 200,
-                steelIngot: 32
+            "warrior-tyrian": {
+                name: "Tyrian Armor",
+                armorCost: {
+                    goldCost: 5000,
+                    materials: {
+                        ironIngot: 200,
+                        steelIngot: 32
+                    }
+                },
+                image: "...",
+                wiki: "https://wiki.guildwars.com/wiki/Warrior_Tyrian_armor"
             },
-            image: "...",
-            wiki: "https://wiki.guildwars.com/wiki/Warrior_Tyrian_armor"
-        },
         // More armor sets...
+        },
+        ranger: {
+            // Ranger armor sets...
+        }
     },
 
     materials: {
