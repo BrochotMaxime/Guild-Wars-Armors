@@ -43,21 +43,4 @@ professionSelected.addEventListener('change', () => {
     } else {
         updateWorkflowSteps(1); // Second step active
     };
-
-    // Load armor options based on selected profession
-    // switch (professionSelected.value) {
-    //     case 'warrior':
-    //         // Load warrior armors
-    //         gameData.armors.warrior.forEach(armor => {
-    //             // Code to display armor options
-    //         });
-    //         break;
-    //     case 'ranger':
-    //         // Load ranger armors
-    //         break;
-    //     // More professions...
-    //     default:
-    //         // Handle invalid selection
-    //         break;
-    // };
 });
