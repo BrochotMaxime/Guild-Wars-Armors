@@ -134,7 +134,66 @@ armorSelectElement.addEventListener('change', () => {
     const selectedArmor = Object.values(gameData.armors).find(armor => armor.id === armorSelectElement.value);
 
     fillArmorCost(selectedArmor);
+    updateWorkflowSteps(2);
+    getPlayerInventory();
 });
 
 
-// Checking player inventory
+// Checking player inventory according to armor cost in section 3
+
+const playerInventory = document.querySelector('.player-inventory');
+
+const isInventoryValid = (inventory) => Object.keys(inventory).length > 0;
+
+const getPlayerInventory = () => {
+    const inventory = {};
+    
+    const inventoryForm = document.createElement('form');
+    playerInventory.appendChild(inventoryForm);
+    
+    // Gold input
+    const goldLabel = document.createElement('label');
+    goldLabel.htmlFor = 'gold-input';
+    goldLabel.textContent = 'Gold: ';
+    inventoryForm.appendChild(goldLabel);
+
+    const goldInput = document.createElement('input');
+    goldInput.type = 'number';
+    goldInput.id = 'gold-input';
+    playerInventory.appendChild(goldInput);
+    
+    inventoryForm.appendChild(document.createElement('br'));
+
+    // Materials inputs
+    Object.values(gameData.materials).forEach(material => {
+        const materialLabel = document.createElement('label');
+        materialLabel.htmlFor = `${material.id}-input`;
+        materialLabel.textContent = `${material.name}: `;
+        inventoryForm.appendChild(materialLabel);
+        const materialInput = document.createElement('input');
+        materialInput.type = 'number';
+        materialInput.id = `${material.id}-input`;
+        inventoryForm.appendChild(materialInput);
+        inventoryForm.appendChild(document.createElement('br'));
+    });
+
+    const submitButton = document.createElement('button');
+    submitButton.type = 'button';
+    submitButton.textContent = 'Submit Inventory';
+    inventoryForm.appendChild(submitButton);
+
+    submitButton.addEventListener('click', () => {
+        inventory.gold = parseInt(goldInput.value) || 0;
+        Object.values(gameData.materials).forEach(material => {
+            const materialInput = document.getElementById(`${material.id}-input`);
+            inventory[material.id] = parseInt(materialInput.value) || 0;
+        });
+
+        if (!isInventoryValid(inventory)) {
+            alert('Please enter your inventory to proceed.');
+            return;
+        } else {
+            updateWorkflowSteps(3);
+        }
+    });
+};
