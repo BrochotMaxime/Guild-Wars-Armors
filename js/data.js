@@ -1,6 +1,4 @@
-export default gameData;
-
-const gameData = {
+export const gameData = {
     professions: {
         warrior: {
             id: "warrior",

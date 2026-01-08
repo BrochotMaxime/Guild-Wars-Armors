@@ -1,18 +1,19 @@
-// Work on workflow steps based on user selections
+import { gameData } from './data.js';
 
-// Sections representing each step in the workflow
+console.log(gameData);
+console.log(document.getElementById('profession'));
+
 const professionSection = document.getElementById('profession-selection');
 const armorSection = document.getElementById('armor-selection');
 const playerInventorySection = document.getElementById('player-inventory');
 const missingResourcesSection = document.getElementById('missing-resources');
 const resourceSourcesSection = document.getElementById('resource-sources');
 
-const professionSelected = document.getElementById('profession');
+const professionSelect = document.getElementById('profession');
 
 // Workflow step list
 const sections = document.querySelectorAll('.step');
 
-// Function to update the states of workflow steps
 const updateWorkflowSteps = (currentStepIndex) => {
     sections.forEach((section, index) => {
         section.classList.remove('active', 'inactive', 'completed');
@@ -26,21 +27,31 @@ const updateWorkflowSteps = (currentStepIndex) => {
     });
 };
 
-// Function to validate profession selection
-const isProfessionValid = (profession) => {
-    if (!profession) {
-        return false;
+const isProfessionValid = (profession) => !!profession;
+
+professionSelect.addEventListener('change', () => {
+    if (!isProfessionValid(professionSelect.value)) {
+        alert('Please select a profession to proceed.');
+        updateWorkflowSteps(0);
     } else {
-        return true;
+        updateWorkflowSteps(1);
     }
+});
+
+// Populate professions
+const populateProfessions = () => {
+    const defaultOption = document.createElement('option');
+    defaultOption.value = "";
+    defaultOption.textContent = "-- Choose a profession --";
+    professionSelect.appendChild(defaultOption);
+
+    Object.values(gameData.professions).forEach(prof => {
+        const option = document.createElement('option');
+        option.value = prof.id;
+        option.textContent = prof.name;
+        professionSelect.appendChild(option);
+    });
 };
 
-// Profession change event
-professionSelected.addEventListener('change', () => {
-    if (!isProfessionValid(professionSelected.value)) {
-        alert('Please select a profession to proceed.');
-        updateWorkflowSteps(0); // First step active
-    } else {
-        updateWorkflowSteps(1); // Second step active
-    };
-});
+// Appel direct
+populateProfessions();
